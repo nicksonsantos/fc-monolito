@@ -57,17 +57,15 @@ describe("Invoice Repository test", () => {
     const repository = new InvoiceRepository();
     await repository.generate(invoice);
 
-    const invoiceDb = await InvoiceModel.findOne({
-      where: { id: "1" },
-      include: [InvoiceItemsModel],
-    });
+    const invoiceDb = await InvoiceModel.findOne({ where: { id: "1" } });
+    const itemsDb = await InvoiceItemsModel.findAll({ where: { invoiceId: "1" } });
 
     expect(invoiceDb).toBeDefined();
     expect(invoiceDb.id).toBe("1");
     expect(invoiceDb.name).toBe("Invoice 1");
     expect(invoiceDb.document).toBe("123456789");
     expect(invoiceDb.total).toBe(300);
-    expect(invoiceDb.items).toHaveLength(2);
+    expect(itemsDb).toHaveLength(2);
   });
 
   it("should find an invoice", async () => {

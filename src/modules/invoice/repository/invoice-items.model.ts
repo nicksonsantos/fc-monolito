@@ -1,5 +1,4 @@
-import { Column, Model, PrimaryKey, Table, ForeignKey, BelongsTo } from "sequelize-typescript";
-import { InvoiceModel } from "./invoice.model";
+import { Column, Model, PrimaryKey, Table } from "sequelize-typescript";
 
 @Table({
   tableName: 'invoice_items',
@@ -10,7 +9,6 @@ export class InvoiceItemsModel extends Model {
   @Column({ allowNull: false })
   id: string;
 
-  @ForeignKey(() => InvoiceModel)
   @Column({ allowNull: false })
   invoiceId: string;
 
@@ -19,7 +17,4 @@ export class InvoiceItemsModel extends Model {
 
   @Column({ allowNull: false })
   price: number;
-
-  @BelongsTo(() => InvoiceModel)
-  invoice: InvoiceModel;
 }

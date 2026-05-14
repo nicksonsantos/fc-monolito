@@ -23,10 +23,17 @@ Cada módulo segue a arquitetura com:
 ## Tecnologias
 
 - **Linguagem**: TypeScript
-- **Framework**: Node.js
+- **Framework**: Node.js / Express
 - **Banco de dados**: SQLite (para testes) / Sequelize ORM
-- **Testes**: Jest
+- **Testes**: Jest / Supertest
 - **Build**: TypeScript Compiler
+
+## API Endpoints
+
+- `POST /products` - Cadastro de produtos
+- `POST /clients` - Cadastro de clientes
+- `POST /checkout` - Processamento de pedidos e geração de nota fiscal
+- `GET /invoice/:id` - Consulta de nota fiscal gerada
 
 ## Instalação
 
@@ -43,7 +50,7 @@ npm install
 
 ## Executando Testes
 
-Para executar todos os testes:
+Para executar todos os testes, incluindo os testes end-to-end da API:
 ```bash
 npm test
 ```
